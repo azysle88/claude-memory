@@ -11,3 +11,4 @@
 - [mPDF 報告生成踩坑指南](reference_mpdf_skill.md) — hdreport/skills/mpdf_pdf_generation.md，可複製到其他專案
 - [付費 API 部署 checklist](reference_paid_api_checklist.md) — hdreport/skills/paid_api_deployment_checklist.md，新專案接 Claude/OpenAI 前必跑
 - [PowerShell 5.1 編碼坑](feedback_powershell_encoding.md) — .ps1 必須 UTF-8 with BOM，否則中文被當 CP950 亂碼
+- [正式機部署與環境](reference_deploy.md) — SSH/FTP 連線、pyswisseph 已裝、scp targeted 部署（勿用全量 deploy.php 覆蓋 .env）
