@@ -26,4 +26,10 @@ hdreport 正式機（report.humanhd.com）部署與環境重點。
 - 部署後務必：正式機 `php -l` + 跑端到端煙霧測試（calcChartData → BodyGraph::generate → Generator::render 產 PDF）
 - 正式機**非 git repo**（FTP/scp 部署，不能在伺服器 git pull）
 
+**crontab 操作（踩過雷）**
+- 改 crontab **一律用完整清單重設**：`printf '%s\n' '行1' '行2' '行3' | crontab -`
+- **絕不要用** `(crontab -l; echo '新行') | crontab -` 這種一行串——在非互動 SSH 下 `crontab -l` 可能回空，結果把現有排程全洗掉（2026-06-01 差點弄掉每分鐘的 cron_generate_reports）
+- 現有三條（依序）：`cron_generate_reports`（每分鐘）、`cron_api_daily_digest`（9:00）、`cron_feedback_reminder`（11:00），PHP 路徑是 `/usr/local/bin/php`
+- run_migration.php 在正式機跑不出輸出/沒作用 → 改用自帶 PDO + 錯誤回報的小腳本直接跑 ALTER（用 config/app.php 連線，不靠 bootstrap.php）
+
 通用部署原則見 [[reference_paid_api_checklist]] 的「執行環境相依」段。
