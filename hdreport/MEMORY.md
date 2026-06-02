@@ -12,3 +12,4 @@
 - [付費 API 部署 checklist](reference_paid_api_checklist.md) — hdreport/skills/paid_api_deployment_checklist.md，新專案接 Claude/OpenAI 前必跑
 - [PowerShell 5.1 編碼坑](feedback_powershell_encoding.md) — .ps1 必須 UTF-8 with BOM，否則中文被當 CP950 亂碼
 - [正式機部署與環境](reference_deploy.md) — SSH/FTP 連線、pyswisseph 已裝、scp targeted 部署（勿用全量 deploy.php 覆蓋 .env）
+- [報告封測與改版方向](project_beta_feedback.md) — 純匿名問卷已上線、TA=初學者、報告內容待改版（去AI腔/稀釋術語/短報告+補充）
