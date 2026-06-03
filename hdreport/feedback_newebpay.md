@@ -4,7 +4,7 @@ description: 藍新金流（NewebPay）MPG 串接的正確實作規則與踩坑�
 metadata: 
   node_type: memory
   type: feedback
-  originSessionId: 9bb40ec7-6995-40cb-81c3-855d585d8994
+  originSessionId: eaa50adc-d1bb-41f3-beaa-03c107947b36
 ---
 
 串接藍新金流時，一律套用以下規則。完整實作範本在 [[reference-newebpay-skill]]。

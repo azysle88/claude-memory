@@ -4,7 +4,7 @@ description: 藍新金流完整實作範本的所在位置
 metadata: 
   node_type: memory
   type: reference
-  originSessionId: 9bb40ec7-6995-40cb-81c3-855d585d8994
+  originSessionId: eaa50adc-d1bb-41f3-beaa-03c107947b36
 ---
 
 完整可 copy 的實作範本存放於：

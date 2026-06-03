@@ -1,10 +1,8 @@
 ---
 name: telegram-bot-lessons
 description: Telegram Bot webhook 串接踩坑記錄，含已讀不回、Email 連結無反應、多訂單切換、AI 問題範圍限制等已解決的問題
-metadata: 
-  node_type: memory
+metadata:
   type: feedback
-  originSessionId: 9bb40ec7-6995-40cb-81c3-855d585d8994
 ---
 
 串接 Telegram Bot webhook 時，一律套用以下規則。
