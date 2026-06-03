@@ -4,7 +4,7 @@ description: 墨客人類圖付費報告網站專案背景、技術架構與目�
 metadata: 
   node_type: memory
   type: project
-  originSessionId: eaa50adc-d1bb-41f3-beaa-03c107947b36
+  originSessionId: 9bb40ec7-6995-40cb-81c3-855d585d8994
 ---
 
 人類圖付費報告網站，使用者填出生資料 → 藍新金流付款 → Claude API 生成報告 → PDF 寄 Email。Telegram Bot 提供諮詢。
@@ -55,17 +55,25 @@ php scripts/setup_webhook.php                   # 設定 Telegram webhook
 - **不提供連結**（無法確認收件者身份）
 - `skills/report.md` = Claude 系統提示：HTML 模板規格 + HD 知識庫 + Layer 撰寫指南
 
-## 目前狀態（2026-05-22）
+## Email 設定（2026-05-27 更新）
+- 原本用 osa1.hostclusters.com SMTP，因 runaway loop 燒壞 IP 信譽被 Gmail 451 拒絕
+- 改用 **Resend**（smtp.resend.com:465, user: resend, pass: API key）
+- 網域 report.humanhd.com 已在 Resend 驗證完畢
+- Cloudflare 已加 SPF / DKIM / DMARC for report.humanhd.com
+
+## 目前狀態（2026-05-27）
 - [x] 完整程式碼骨架
 - [x] GitHub Repo 建立並 push
 - [x] .env 設定（production 用 localhost DB）
-- [x] DB Migration（3 張表）
+- [x] DB Migration（5 張表，含 generation_retry + api_usage_log）
 - [x] FTP 部署上線
 - [x] Telegram Webhook 設定
 - [x] 藍新 Notify/Return URL 設定
-- [x] Cron 非同步報告生成
+- [x] Cron 非同步報告生成（狀態機 + 重試上限 + 卡單回收）
 - [x] HTML 報告格式（對齊 MUSEON 設計模板）
 - [x] skills/report.md（HD 知識庫 + HTML 模板規格）
+- [x] API 用量監控（api_usage_log + Telegram 即時通知 + 每日 digest）
+- [x] 端對端測試通過（付款 → cron → Claude → PDF → Resend Email 進 Gmail 收件匣）
+- [ ] API_USAGE_NOTIFY=1 測試完畢後關閉
 - [ ] skills/report.md 補強（MUSEON 完整知識內容）
-- [ ] 端對端測試（填表 → 付款 → cron → Email 連結 → 瀏覽報告）
 - [ ] 切換藍新正式環境
