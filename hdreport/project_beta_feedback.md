@@ -24,4 +24,8 @@ hdreport 報告品質迭代的進度與方向（2026-06-02 起）。
 - Peggy：字太多有壓力、專業名詞不懂 → 建議**短主報告 + 補充**（補充可由 Telegram bot 諮詢承接，待封測 Q20 驗證）
 - 改的是 `skills/report.md`（runtime 載入的報告生成 prompt）
 
-下一步：封測回收後，把問卷結果轉成可行動改版清單，再改 report.md。相關踩坑見 [[reference_mpdf_skill]]。
+**報告品質已做的兩大改善（2026-06-04）**
+1. **RAG 知識庫**（見 [[project_knowledge_base]]）：產報告/諮詢注入精確知識＋墨客語氣範本，治拼貼感
+2. **語氣引擎 skill**：`skills/human_design_voice.md`（聲音DNA＋六條鐵律＋禁巴納姆空話），由 `Client` 注入產報告/chat/諮詢三處 system prompt，直接治「太AI/繞口」
+
+下一步：封測回收後，把問卷結果轉成可行動改版清單。相關踩坑見 [[reference_mpdf_skill]]。
