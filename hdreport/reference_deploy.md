@@ -30,6 +30,11 @@ hdreport 正式機（report.humanhd.com）部署與環境重點。
 - 改 crontab **一律用完整清單重設**：`printf '%s\n' '行1' '行2' '行3' | crontab -`
 - **絕不要用** `(crontab -l; echo '新行') | crontab -` 這種一行串——在非互動 SSH 下 `crontab -l` 可能回空，結果把現有排程全洗掉（2026-06-01 差點弄掉每分鐘的 cron_generate_reports）
 - 現有三條（依序）：`cron_generate_reports`（每分鐘）、`cron_api_daily_digest`（9:00）、`cron_feedback_reminder`（11:00），PHP 路徑是 `/usr/local/bin/php`
-- run_migration.php 在正式機跑不出輸出/沒作用 → 改用自帶 PDO + 錯誤回報的小腳本直接跑 ALTER（用 config/app.php 連線，不靠 bootstrap.php）
+- migration 一律用 `scripts/run_sql.php <file.sql>`（自帶 PDO + 錯誤回報；舊的 run_migration.php 在正式機跑不出東西，棄用）
+
+**改正式機 .env（已踩 3 次的坑！）**
+- 透過 SSH 追加變數**只用單引號 printf**：`printf '%s\n' 'KEY=val' 'KEY2=val2' >> .env`
+- **絕不要用** `echo 'x' >> .env`（最後一行沒換行會黏上去）或雙引號 `printf "%s\n"`（經 SSH/here-string 後 `\n` 會被字面化成 `n`，把多個變數黏成一行 `KEY=nKEY2=...n`）
+- 改錯了就 `sed -i '/KEY/d' .env` 刪掉壞行，再用單引號 printf 重加；改完一定 `grep -n ... | cat -A` 確認每個變數各自獨立成行（行尾 `$`）
 
 通用部署原則見 [[reference_paid_api_checklist]] 的「執行環境相依」段。
