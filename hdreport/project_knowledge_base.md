@@ -29,6 +29,6 @@ metadata:
 - 跑批在正式機 Linux（Windows 中文路徑 PHP 會壞）；source 檔上傳到 web root 外 `~/rag_src` 處理完即刪
 - **VOYAGE_API_KEY 已設在正式機 .env**
 
-**P4 待做**：把 `App\Rag\Retriever` 接到產報告 / 基核 / Telegram 諮詢三個 Agent（產報告用該圖的 hd 實體過濾召回 canonical+voice）。
+**P4 已完成（2026-06-04）**：`Client.php` 三端都接上 `Retriever`——產報告 `buildReportPrompt`（用該圖類型＋通道過濾召回 canonical＋voice、要求融會貫通治拼貼感）、基核 `chat`、Telegram 諮詢 `answerConsultation`（語意檢索注入）。皆 graceful（無 Voyage key/失敗則略過）。注意：RAG 只在能連 DB 的環境作用＝正式機（本機連不到正式機 3306）。
 
 **仍待優化**：canonical 4 篇重複未去重、結晶 Crystal Essence 可填 summary 欄、184 篇純 essay（風格模仿）未入庫。原報告改版方向見 [[project_beta_feedback]]。
