@@ -14,3 +14,4 @@
 - [PowerShell 5.1 編碼坑](feedback_powershell_encoding.md) — .ps1 必須 UTF-8 with BOM，否則中文被當 CP950 亂碼
 - [正式機部署與環境](reference_deploy.md) — SSH/FTP 連線、pyswisseph 已裝、scp targeted 部署（勿用全量 deploy.php 覆蓋 .env）
 - [報告封測與改版方向](project_beta_feedback.md) — 純匿名問卷已上線、TA=初學者、報告內容待改版（去AI腔/稀釋術語/短報告+補充）
+- [知識庫素材](project_knowledge_base.md) — docs/ 墨應系(墨客本人語氣範本)+亞洲人類圖學院(標準術語)，報告改版用、尚未消化
