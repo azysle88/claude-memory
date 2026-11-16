@@ -1,0 +1,11 @@
+# 私人資料只留本機，不進版控（沿用上游 .gitignore 規則）
+.rd/
+style_profile.md
+content_plan.md
+_scraped_posts_draft.md
+drafts/
+data/*
+!data/rule_registry.json
+__pycache__/
+*.pyc
+node_modules/
